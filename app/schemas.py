@@ -17,3 +17,22 @@ class RegisterResponse(BaseModel):
     role: str
     created_at: datetime
     message: str
+
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class UserResponse(BaseModel):
+    id: int
+    email: EmailStr
+    role: str
+
+
+class ChangePasswordRequest(BaseModel):
+    current_password: str
+    new_password: str = Field(
+        min_length=8,
+        max_length=128,
+    )
